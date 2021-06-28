@@ -3,3 +3,5 @@
  * @namespace Lazy
  * @description UUID
  */
+
+export * from "./time";
