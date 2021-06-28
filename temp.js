@@ -26,9 +26,13 @@ const timeHighAndVersion = new Uint8Array([
 ]);
 console.log(timeHighAndVersion);
 
-
 const random = Math.floor(Math.random() * 0xffff);
 console.log(random.toString(16));
+
+const clockSequenceHigh = random >>> 8 & 0xff;
+const clockSequenceLow = random >>> 0 & 0xff;
+console.log(clockSequenceHigh.toString(16));
+console.log(clockSequenceLow.toString(16));
 
 const node = Math.floor(Math.random() * 0xffffffffffff);
 console.log(node.toString(16));
