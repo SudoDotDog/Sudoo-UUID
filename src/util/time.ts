@@ -7,7 +7,7 @@
 import { UUIDTimeComponents } from "../declare";
 
 /* eslint-disable @typescript-eslint/no-magic-numbers, no-bitwise */
-export const createUUIDTimeComponents = (date: Date): UUIDTimeComponents => {
+export const createUUIDTimeComponents = (date: Date, version: number): UUIDTimeComponents => {
 
     const timeValue: number = date.getTime();
     const nanoSeconds: bigint = BigInt(timeValue) * 10000n + 122192928000000000n;
@@ -28,7 +28,7 @@ export const createUUIDTimeComponents = (date: Date): UUIDTimeComponents => {
 
     const nanoHigh: number = Math.floor(Number(nanoSeconds / 0x1000000000000n)) % 0x10000;
     const timeHighAndVersion: Uint8Array = new Uint8Array([
-        (nanoHigh >>> 8 & 0xf) | 0x10,
+        (nanoHigh >>> 8 & 0xf) | version,
         nanoHigh >>> 0 & 0xff,
     ]);
 

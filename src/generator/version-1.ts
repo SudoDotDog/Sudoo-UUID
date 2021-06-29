@@ -4,9 +4,9 @@
  * @description Version 1
  */
 
-import { convertByteArrayToHex, convertNumberArrayToHex } from "../util/convert";
 import { UUIDTimeComponents } from "../declare";
-import { createUUIDRandom, createUUIDSequence } from "../util/random";
+import { convertByteArrayToHex, convertNumberArrayToHex } from "../util/convert";
+import { createUUIDRandom, createUUIDSequenceAndVariant } from "../util/random";
 import { createUUIDTimeComponents } from "../util/time";
 
 export type UUIDVersion1GeneratorOptions = {
@@ -28,13 +28,15 @@ export class UUIDVersion1Generator {
 
     public generate(date: Date = new Date()): string {
 
-        const timeComponents: UUIDTimeComponents = createUUIDTimeComponents(date);
+        // Version 1 0x10
+        const timeComponents: UUIDTimeComponents = createUUIDTimeComponents(date, 16);
 
         const timeLow: string = convertByteArrayToHex(timeComponents.low, 8);
         const timeMedium: string = convertByteArrayToHex(timeComponents.medium, 4);
         const timeHighAndVersion: string = convertByteArrayToHex(timeComponents.highAndVersion, 4);
 
-        const sequence: Uint8Array = createUUIDSequence();
+        // Variable 1 0x80
+        const sequence: Uint8Array = createUUIDSequenceAndVariant(128);
         const sequenceString: string = convertByteArrayToHex(sequence, 4);
 
         const nodeBytes: number = 6;
