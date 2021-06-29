@@ -30,15 +30,16 @@ export class UUIDVersion1Generator {
 
         const timeComponents: UUIDTimeComponents = createUUIDTimeComponents(date);
 
-        const timeLow: string = convertByteArrayToHex(timeComponents.low);
-        const timeMedium: string = convertByteArrayToHex(timeComponents.medium);
-        const timeHighAndVersion: string = convertByteArrayToHex(timeComponents.highAndVersion);
+        const timeLow: string = convertByteArrayToHex(timeComponents.low, 8);
+        const timeMedium: string = convertByteArrayToHex(timeComponents.medium, 4);
+        const timeHighAndVersion: string = convertByteArrayToHex(timeComponents.highAndVersion, 4);
 
         const sequence: Uint8Array = createUUIDSequence();
-        const sequenceString: string = convertByteArrayToHex(sequence);
+        const sequenceString: string = convertByteArrayToHex(sequence, 4);
 
+        const nodeBytes: number = 6;
         const randomNode: number = createUUIDRandom(6);
-        const randomNodeString: string = convertNumberArrayToHex(randomNode);
+        const randomNodeString: string = convertNumberArrayToHex(randomNode, nodeBytes * 2);
 
         return `${timeLow}-${timeMedium}-${timeHighAndVersion}-${sequenceString}-${randomNodeString}`;
     }
