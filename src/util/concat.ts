@@ -4,6 +4,8 @@
  * @description Concat
  */
 
+import { UUIDComponentList } from "../declare";
+
 export const concatUUID = (
     first: string, // 8
     second: string, // 4
@@ -22,7 +24,7 @@ export const concatUUID = (
     ].join('-');
 };
 
-export const splitUUID = (uuid: string): [string, string, string, string, string] => {
+export const splitUUID = (uuid: string): UUIDComponentList => {
 
     const splited: string[] = uuid.split('-');
     return [

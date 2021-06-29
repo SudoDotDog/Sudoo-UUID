@@ -10,6 +10,10 @@ export const verifyUUIDVersion1Regex: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-1[0-9a-
 
 export const verifyUUIDVersion1 = (uuid: string): boolean => {
 
+    if (typeof uuid !== 'string') {
+        return false;
+    }
+
     if (uuid === NilUUID) {
         return true;
     }

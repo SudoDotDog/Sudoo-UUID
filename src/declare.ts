@@ -10,3 +10,5 @@ export type UUIDTimeComponents = {
     readonly medium: Uint8Array;
     readonly highAndVersion: Uint8Array;
 };
+
+export type UUIDComponentList = [string, string, string, string, string];

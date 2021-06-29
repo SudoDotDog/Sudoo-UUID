@@ -4,7 +4,9 @@
  * @description UUID
  */
 
+import { UUIDComponentList } from "./declare";
 import { concatUUID, splitUUID } from "./util/concat";
+import { NilUUIDComponents } from "./util/nil";
 import { verifyUUID } from "./verify/common";
 
 export class UUID {
@@ -39,7 +41,7 @@ export class UUID {
             return null;
         }
 
-        const splited: [string, string, string, string, string] = splitUUID(uuid);
+        const splited: UUIDComponentList = splitUUID(uuid);
 
         return new UUID(
             splited[0],
@@ -48,6 +50,11 @@ export class UUID {
             splited[3],
             splited[4],
         );
+    }
+
+    public static fromNil(): UUID {
+
+        return this.fromComponents(...NilUUIDComponents);
     }
 
     public static fromComponents(
