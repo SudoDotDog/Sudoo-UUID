@@ -4,5 +4,8 @@
     ],
     "extends": [
         "@sudoo/mocha-config"
+    ],
+    "require": [
+        "./test/tshook.js"
     ]
 }
