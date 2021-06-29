@@ -13,7 +13,8 @@ import { UUID } from "../uuid";
 export type UUIDVersion1GeneratorOptions = {
 };
 
-export const DefaultUUIDVersion1GeneratorOptions: UUIDVersion1GeneratorOptions = {};
+export const DefaultUUIDVersion1GeneratorOptions: UUIDVersion1GeneratorOptions = {
+};
 
 export class UUIDVersion1Generator {
 

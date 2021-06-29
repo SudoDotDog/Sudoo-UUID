@@ -15,8 +15,8 @@ export const concatUUID = (
     return [
         first.padStart(8, '0'),
         second.padStart(4, '0'),
-        third.padStart(4, '0'),
-        fourth.padStart(4, '0'),
+        third.padEnd(4, '0'),
+        fourth.padEnd(4, '0'),
         // eslint-disable-next-line @typescript-eslint/no-magic-numbers
         fifth.padStart(12, '0'),
     ].join('-');

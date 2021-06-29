@@ -92,4 +92,38 @@ export class UUID {
             this._fifth,
         );
     }
+
+    public toBraceString(): string {
+
+        return `{${this.toString()}}`;
+    }
+
+    public toUniformResourceString(): string {
+
+        return `urn:uuid:${this.toString()}`;
+    }
+
+    public getVariant(): 0 | 1 | 2 {
+
+        const intValue: number = parseInt(this._fourth, 16);
+        const variantString = intValue.toString(2).substring(0, 3);
+
+        if (variantString === '100') {
+            return 1;
+        }
+        return 0;
+    }
+
+    public getVersion(): 0 | 1 | 4 {
+
+        const versionString = this._third.substring(0, 1);
+
+        if (versionString === '1') {
+            return 1;
+        }
+        if (versionString === '4') {
+            return 4;
+        }
+        return 0;
+    }
 }
