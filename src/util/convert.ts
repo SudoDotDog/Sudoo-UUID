@@ -13,7 +13,7 @@ export const convertByteArrayToHex = (target: Uint8Array): string => {
     return results.join('');
 };
 
-export const convertNumberArrayToHex = (target: number): string => {
+export const convertNumberToHex = (target: number): string => {
 
     return target.toString(16);
 };
