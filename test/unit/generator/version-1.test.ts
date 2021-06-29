@@ -20,6 +20,6 @@ describe('Given {UUIDVersion1Generator} class', (): void => {
 
         const uuid: string = generator.generate();
 
-        expect(uuid).to.be.equal('');
+        expect(uuid).to.be.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/);
     });
 });

@@ -6,7 +6,11 @@
 
 export const convertByteArrayToHex = (target: Uint8Array): string => {
 
-    return String.fromCharCode(...target);
+    const results: string[] = [];
+    for (const value of target) {
+        results.push(value.toString(16));
+    }
+    return results.join('');
 };
 
 export const convertNumberArrayToHex = (target: number): string => {
