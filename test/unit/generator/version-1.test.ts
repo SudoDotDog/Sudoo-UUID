@@ -7,7 +7,7 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { UUIDVersion1Generator } from "../../../src";
+import { UUIDVersion1Generator, verifyUUIDRegex } from "../../../src";
 
 describe('Given {UUIDVersion1Generator} class', (): void => {
 
@@ -20,6 +20,6 @@ describe('Given {UUIDVersion1Generator} class', (): void => {
 
         const uuid: string = generator.generate();
 
-        expect(uuid).to.be.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/);
+        expect(uuid).to.be.match(verifyUUIDRegex);
     });
 });
