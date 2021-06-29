@@ -15,9 +15,14 @@ export class UUIDVersion1 {
         return UUIDVersion1Generator.create(options);
     }
 
-    public static generate(options: UUIDVersion1GeneratorOptions = DefaultUUIDVersion1GeneratorOptions): UUID {
+    public static generate(date: Date = new Date(), options: UUIDVersion1GeneratorOptions = DefaultUUIDVersion1GeneratorOptions): UUID {
 
-        return this.createGenerator(options).generate();
+        return this.createGenerator(options).generate(date);
+    }
+
+    public static generateString(date: Date = new Date(), options: UUIDVersion1GeneratorOptions = DefaultUUIDVersion1GeneratorOptions): string {
+
+        return this.createGenerator(options).generateString(date);
     }
 
     public static verify(uuid: string): boolean {

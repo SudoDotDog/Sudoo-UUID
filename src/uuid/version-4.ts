@@ -20,6 +20,11 @@ export class UUIDVersion4 {
         return this.createGenerator(options).generate();
     }
 
+    public static generateString(options: UUIDVersion4GeneratorOptions = DefaultUUIDVersion4GeneratorOptions): string {
+
+        return this.createGenerator(options).generateString();
+    }
+
     public static verify(uuid: string): boolean {
 
         return verifyUUIDVersion4(uuid);
