@@ -4,9 +4,9 @@
  * @description Version 4
  */
 
-import { concatUUID } from "../util/concat";
 import { convertByteArrayToHex, convertNumberToHex } from "../util/convert";
 import { createUUIDRandom, createUUIDSequenceAndVariant, createUUIDVersionedRandom } from "../util/random";
+import { UUID } from "../uuid";
 
 export type UUIDVersion4GeneratorOptions = {
 };
@@ -28,7 +28,7 @@ export class UUIDVersion4Generator {
         this._options = options;
     }
 
-    public generate(): string {
+    public generate(): UUID {
 
         const randomFirst: number = createUUIDRandom(4);
         const randomSecond: number = createUUIDRandom(2);
@@ -46,6 +46,6 @@ export class UUIDVersion4Generator {
         const randomNode: number = createUUIDRandom(6);
         const randomNodeString: string = convertNumberToHex(randomNode);
 
-        return concatUUID(randomFirstString, randomSecondString, randomThirdString, sequenceString, randomNodeString);
+        return UUID.fromComponents(randomFirstString, randomSecondString, randomThirdString, sequenceString, randomNodeString);
     }
 }

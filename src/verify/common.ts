@@ -8,7 +8,7 @@ import { NilUUID } from "../util/nil";
 
 export const verifyUUIDCommonRegex: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-export const verifyUUIDCommon = (uuid: string): boolean => {
+export const verifyUUID = (uuid: string): boolean => {
 
     if (uuid === NilUUID) {
         return true;

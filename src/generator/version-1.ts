@@ -5,10 +5,10 @@
  */
 
 import { UUIDTimeComponents } from "../declare";
-import { concatUUID } from "../util/concat";
 import { convertByteArrayToHex, convertNumberToHex } from "../util/convert";
 import { createUUIDRandom, createUUIDSequenceAndVariant } from "../util/random";
 import { createUUIDTimeComponents } from "../util/time";
+import { UUID } from "../uuid";
 
 export type UUIDVersion1GeneratorOptions = {
 };
@@ -29,7 +29,7 @@ export class UUIDVersion1Generator {
         this._options = options;
     }
 
-    public generate(date: Date = new Date()): string {
+    public generate(date: Date = new Date()): UUID {
 
         // Version 1 0x10
         const timeComponents: UUIDTimeComponents = createUUIDTimeComponents(date, 16);
@@ -45,6 +45,6 @@ export class UUIDVersion1Generator {
         const randomNode: number = createUUIDRandom(6);
         const randomNodeString: string = convertNumberToHex(randomNode);
 
-        return concatUUID(timeLow, timeMedium, timeHighAndVersion, sequenceString, randomNodeString);
+        return UUID.fromComponents(timeLow, timeMedium, timeHighAndVersion, sequenceString, randomNodeString);
     }
 }

@@ -18,7 +18,7 @@ describe('Given {UUIDVersion4Generator} Class', (): void => {
 
         const generator: UUIDVersion4Generator = UUIDVersion4Generator.create();
 
-        const uuid: string = generator.generate();
+        const uuid: string = generator.generate().toString();
 
         expect(uuid).to.be.match(verifyUUIDVersion4Regex);
     });

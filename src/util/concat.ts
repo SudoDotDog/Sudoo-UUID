@@ -21,3 +21,15 @@ export const concatUUID = (
         fifth.padStart(12, '0'),
     ].join('-');
 };
+
+export const splitUUID = (uuid: string): [string, string, string, string, string] => {
+
+    const splited: string[] = uuid.split('-');
+    return [
+        splited[0],
+        splited[1],
+        splited[2],
+        splited[3],
+        splited[4],
+    ];
+};

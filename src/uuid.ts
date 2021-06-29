@@ -4,30 +4,92 @@
  * @description UUID
  */
 
-import { NilUUID } from "./util/nil";
-import { UUIDVersion1 } from "./uuid/version-1";
-import { UUIDVersion4 } from "./uuid/version-4";
-import { verifyUUIDCommon } from "./verify/common";
+import { concatUUID, splitUUID } from "./util/concat";
+import { verifyUUID } from "./verify/common";
 
 export class UUID {
 
-    public static get version1(): typeof UUIDVersion1 {
+    public static fromStringOrThrow(uuid: string, error?: Error): UUID {
 
-        return UUIDVersion1;
+        const instance: UUID | null = this.fromStringOrNull(uuid);
+
+        if (instance === null) {
+            if (error) {
+                throw error;
+            }
+            throw new Error(`[Sudoo-UUID] Invalid UUID ${uuid}`);
+        }
+        return instance;
     }
 
-    public static get version4(): typeof UUIDVersion4 {
+    public static fromStringOrUndefined(uuid: string): UUID | undefined {
 
-        return UUIDVersion4;
+        const instance: UUID | null = this.fromStringOrNull(uuid);
+
+        if (instance === null) {
+            return undefined;
+        }
+        return instance;
     }
 
-    public static getNil(): string {
+    public static fromStringOrNull(uuid: string): UUID | null {
 
-        return NilUUID;
+        const verifyResult: boolean = verifyUUID(uuid);
+        if (!verifyResult) {
+            return null;
+        }
+
+        const splited: [string, string, string, string, string] = splitUUID(uuid);
+
+        return new UUID(
+            splited[0],
+            splited[1],
+            splited[2],
+            splited[3],
+            splited[4],
+        );
     }
 
-    public static verify(uuid: string): boolean {
+    public static fromComponents(
+        first: string, // 8
+        second: string, // 4
+        third: string, // 4
+        fourth: string, // 4
+        fifth: string, // 12
+    ): UUID {
 
-        return verifyUUIDCommon(uuid);
+        return new UUID(first, second, third, fourth, fifth);
+    }
+
+    private readonly _first: string; // 8
+    private readonly _second: string; // 4
+    private readonly _third: string; // 4
+    private readonly _fourth: string; // 4
+    private readonly _fifth: string; // 12
+
+    private constructor(
+        first: string, // 8
+        second: string, // 4
+        third: string, // 4
+        fourth: string, // 4
+        fifth: string, // 12
+    ) {
+
+        this._first = first;
+        this._second = second;
+        this._third = third;
+        this._fourth = fourth;
+        this._fifth = fifth;
+    }
+
+    public toString(): string {
+
+        return concatUUID(
+            this._first,
+            this._second,
+            this._third,
+            this._fourth,
+            this._fifth,
+        );
     }
 }
