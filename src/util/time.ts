@@ -4,7 +4,7 @@
  * @description Time
  */
 
-import { UUIDTimeComponents } from "./declare";
+import { UUIDTimeComponents } from "../declare";
 
 /* eslint-disable @typescript-eslint/no-magic-numbers, no-bitwise */
 export const createUUIDTimeComponents = (date: Date): UUIDTimeComponents => {

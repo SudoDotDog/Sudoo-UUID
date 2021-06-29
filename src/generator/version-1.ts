@@ -4,10 +4,10 @@
  * @description Version 1
  */
 
-import { convertByteArrayToHex, convertNumberArrayToHex } from "../convert";
+import { convertByteArrayToHex, convertNumberArrayToHex } from "../util/convert";
 import { UUIDTimeComponents } from "../declare";
-import { createUUIDRandom, createUUIDSequence } from "../random";
-import { createUUIDTimeComponents } from "../time";
+import { createUUIDRandom, createUUIDSequence } from "../util/random";
+import { createUUIDTimeComponents } from "../util/time";
 
 export type UUIDVersion1GeneratorOptions = {
 };
