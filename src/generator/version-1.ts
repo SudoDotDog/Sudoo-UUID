@@ -36,7 +36,7 @@ export class UUIDVersion1Generator {
         const timeMedium: string = convertByteArrayToHex(timeComponents.medium);
         const timeHighAndVersion: string = convertByteArrayToHex(timeComponents.highAndVersion);
 
-        // Variable 1 0x80
+        // Variant 1 0x80
         const sequence: Uint8Array = createUUIDSequenceAndVariant(128);
         const sequenceString: string = convertByteArrayToHex(sequence);
 
