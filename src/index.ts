@@ -5,7 +5,7 @@
  */
 
 export * from "./declare";
+export * from "./generator/version-1";
 export * from "./random";
 export * from "./time";
-export * from "./uuid";
 
