@@ -34,7 +34,7 @@ export const createUUIDSequenceAndVariant = (variant: number): Uint8Array => {
 
     const randomSequence: number = createUUIDRandom(2);
     const sequence: Uint8Array = new Uint8Array([
-        randomSequence >>> 8 & 0xff | variant,
+        randomSequence >>> 8 & 0xf | variant,
         randomSequence >>> 0 & 0xff,
     ]);
     return sequence;
