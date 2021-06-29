@@ -48,4 +48,9 @@ export class UUIDVersion1Generator {
 
         return UUID.fromComponents(timeLow, timeMedium, timeHighAndVersion, sequenceString, randomNodeString);
     }
+
+    public generateString(date: Date = new Date()): string {
+
+        return this.generate(date).toString();
+    }
 }

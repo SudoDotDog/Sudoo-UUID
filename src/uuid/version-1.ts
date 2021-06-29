@@ -5,6 +5,7 @@
  */
 
 import { DefaultUUIDVersion1GeneratorOptions, UUIDVersion1Generator, UUIDVersion1GeneratorOptions } from "../generator/version-1";
+import { UUID } from "../uuid";
 import { verifyUUIDVersion1 } from "../verify/version-1";
 
 export class UUIDVersion1 {
@@ -12,6 +13,11 @@ export class UUIDVersion1 {
     public static createGenerator(options: UUIDVersion1GeneratorOptions = DefaultUUIDVersion1GeneratorOptions): UUIDVersion1Generator {
 
         return UUIDVersion1Generator.create(options);
+    }
+
+    public static generate(options: UUIDVersion1GeneratorOptions = DefaultUUIDVersion1GeneratorOptions): UUID {
+
+        return this.createGenerator(options).generate();
     }
 
     public static verify(uuid: string): boolean {

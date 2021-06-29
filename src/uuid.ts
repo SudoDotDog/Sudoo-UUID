@@ -110,6 +110,17 @@ export class UUID {
         return `urn:uuid:${this.toString()}`;
     }
 
+    public toComponentsList(): UUIDComponentList {
+
+        return [
+            this._first,
+            this._second,
+            this._third,
+            this._fourth,
+            this._fifth,
+        ];
+    }
+
     public getVariant(): 0 | 1 | 2 {
 
         const intValue: number = parseInt(this._fourth, 16);

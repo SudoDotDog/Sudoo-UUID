@@ -48,4 +48,9 @@ export class UUIDVersion4Generator {
 
         return UUID.fromComponents(randomFirstString, randomSecondString, randomThirdString, sequenceString, randomNodeString);
     }
+
+    public generateString(): string {
+
+        return this.generate().toString();
+    }
 }
