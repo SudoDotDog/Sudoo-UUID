@@ -6,16 +6,18 @@
 
 import { UUIDTimeComponents } from "../declare";
 import { concatUUID } from "../util/concat";
-import { convertByteArrayToHex, convertNumberArrayToHex } from "../util/convert";
+import { convertByteArrayToHex, convertNumberToHex } from "../util/convert";
 import { createUUIDRandom, createUUIDSequenceAndVariant } from "../util/random";
 import { createUUIDTimeComponents } from "../util/time";
 
 export type UUIDVersion1GeneratorOptions = {
 };
 
+export const DefaultUUIDVersion1GeneratorOptions: UUIDVersion1GeneratorOptions = {};
+
 export class UUIDVersion1Generator {
 
-    public static create(options: UUIDVersion1GeneratorOptions = {}): UUIDVersion1Generator {
+    public static create(options: UUIDVersion1GeneratorOptions = DefaultUUIDVersion1GeneratorOptions): UUIDVersion1Generator {
 
         return new UUIDVersion1Generator(options);
     }
@@ -41,7 +43,7 @@ export class UUIDVersion1Generator {
         const sequenceString: string = convertByteArrayToHex(sequence);
 
         const randomNode: number = createUUIDRandom(6);
-        const randomNodeString: string = convertNumberArrayToHex(randomNode);
+        const randomNodeString: string = convertNumberToHex(randomNode);
 
         return concatUUID(timeLow, timeMedium, timeHighAndVersion, sequenceString, randomNodeString);
     }
