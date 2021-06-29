@@ -1,6 +1,12 @@
 /**
  * @author WMXPY
- * @namespace Lazy
+ * @namespace UUID
  * @description Declare
  */
 
+export type UUIDTimeComponents = {
+
+    readonly low: Uint8Array;
+    readonly medium: Uint8Array;
+    readonly highAndVersion: Uint8Array;
+};

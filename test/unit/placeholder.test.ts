@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Lazy
+ * @namespace UUID
  * @description Placeholder
  * @override Unit Test
  */

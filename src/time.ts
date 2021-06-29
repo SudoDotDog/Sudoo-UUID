@@ -1,18 +1,13 @@
 /**
  * @author WMXPY
- * @namespace Lazy
+ * @namespace UUID
  * @description Time
  */
 
-export type UUIDTimeComponents = {
-
-    readonly low: Uint8Array;
-    readonly medium: Uint8Array;
-    readonly highAndVersion: Uint8Array;
-};
+import { UUIDTimeComponents } from "./declare";
 
 /* eslint-disable @typescript-eslint/no-magic-numbers, no-bitwise */
-export const createUUIDTimeComponents = (date: Date = new Date()): UUIDTimeComponents => {
+export const createUUIDTimeComponents = (date: Date): UUIDTimeComponents => {
 
     const timeValue: number = date.getTime();
     const nanoSeconds: bigint = BigInt(timeValue) * 10000n + 122192928000000000n;
