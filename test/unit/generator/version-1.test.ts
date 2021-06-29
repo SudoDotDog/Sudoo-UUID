@@ -9,7 +9,7 @@ import { expect } from "chai";
 import * as Chance from "chance";
 import { UUIDVersion1Generator, verifyUUIDVersion1Regex } from "../../../src";
 
-describe('Given {UUIDVersion1Generator} class', (): void => {
+describe('Given {UUIDVersion1Generator} Class', (): void => {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('uuid-generator-version-1');
