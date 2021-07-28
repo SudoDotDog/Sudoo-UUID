@@ -9,6 +9,7 @@ export * from "./generator/version-1";
 export * from "./generator/version-4";
 export * from "./util/concat";
 export * from "./util/convert";
+export * from "./util/namespace";
 export * from "./util/nil";
 export * from "./util/random";
 export * from "./util/time";
